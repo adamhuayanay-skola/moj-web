@@ -9,17 +9,60 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #0a0a0a url('bg.jpg') center center / cover no-repeat fixed;
       color: #e8f0ff;
       min-height: 100vh;
       line-height: 1.65;
       font-size: 18px;
+      background-color: #05080f;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 15% 30%, rgba(0, 140, 255, 0.55) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 25% 70%, rgba(30, 100, 220, 0.35) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 30% at 10% 50%, rgba(100, 200, 255, 0.25) 0%, transparent 45%),
+        linear-gradient(145deg, #0a0e18 0%, #05080f 40%, #020408 100%);
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    /* geometrické panely – imitace 3D polygonů */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(160deg, transparent 40%, rgba(15, 25, 45, 0.9) 40.5%, rgba(8, 14, 28, 0.95) 70%, transparent 70.5%),
+        linear-gradient(200deg, transparent 55%, rgba(12, 20, 38, 0.85) 55.5%, rgba(6, 12, 24, 0.9) 85%, transparent 85.5%),
+        linear-gradient(120deg, transparent 65%, rgba(10, 18, 35, 0.8) 65.5%, transparent 90%);
+      opacity: 0.85;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          -35deg,
+          transparent,
+          transparent 80px,
+          rgba(20, 40, 70, 0.08) 80px,
+          rgba(20, 40, 70, 0.08) 81px
+        ),
+        repeating-linear-gradient(
+          55deg,
+          transparent,
+          transparent 120px,
+          rgba(15, 30, 55, 0.06) 120px,
+          rgba(15, 30, 55, 0.06) 121px
+        );
     }
 
     #welcome {
       position: fixed;
       inset: 0;
-      background: #0a0a0a url('bg.jpg') center center / cover no-repeat;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -27,12 +70,18 @@
       text-align: center;
       z-index: 999;
       padding: 2rem;
+      background-color: #05080f;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 15% 30%, rgba(0, 140, 255, 0.5) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 25% 70%, rgba(30, 100, 220, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 30% at 10% 50%, rgba(100, 200, 255, 0.22) 0%, transparent 45%),
+        linear-gradient(145deg, #0a0e18 0%, #05080f 40%, #020408 100%);
     }
     #welcome::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(5, 15, 35, 0.72);
+      background: rgba(3, 10, 22, 0.35);
       z-index: 0;
     }
     #welcome > * { position: relative; z-index: 1; }
@@ -51,7 +100,7 @@
       margin-top: 1.8rem;
       font-size: 1.1rem;
       color: #c5dcff;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.5);
       padding: 0.9rem 1.4rem;
       border-radius: 10px;
       border: 1px solid #2a5a9a;
@@ -68,7 +117,7 @@
     }
     #welcome button:hover { background: #2180e0; }
 
-    .layout { display: none; min-height: 100vh; }
+    .layout { display: none; min-height: 100vh; position: relative; z-index: 1; }
     .layout.show { display: flex; }
 
     .sidebar {
@@ -79,7 +128,8 @@
       position: fixed;
       left: 0; top: 0; bottom: 0;
       overflow-y: auto;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
+      z-index: 10;
     }
     .sidebar .name {
       font-size: 1.5rem;
@@ -117,6 +167,8 @@
       margin-left: 250px;
       padding: 2.2rem 2.5rem 3rem;
       max-width: 740px;
+      position: relative;
+      z-index: 1;
     }
 
     .section { display: none; }
@@ -139,12 +191,12 @@
       font-size: 1.08rem;
     }
     .box {
-      background: rgba(8, 22, 48, 0.82);
+      background: rgba(8, 22, 48, 0.8);
       border: 1px solid #1a4a7a;
       border-radius: 12px;
       padding: 1.3rem 1.5rem;
       margin-bottom: 1.1rem;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(6px);
     }
     ul { list-style: none; padding: 0; }
     ul li {
