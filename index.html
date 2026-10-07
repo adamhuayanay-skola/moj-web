@@ -13,30 +13,26 @@
       min-height: 100vh;
       line-height: 1.65;
       font-size: 18px;
-      background-color: #05080f;
+      background-color: #020508;
       background-image:
-        radial-gradient(ellipse 80% 60% at 15% 30%, rgba(0, 140, 255, 0.55) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 25% 70%, rgba(30, 100, 220, 0.35) 0%, transparent 50%),
-        radial-gradient(ellipse 40% 30% at 10% 50%, rgba(100, 200, 255, 0.25) 0%, transparent 45%),
-        linear-gradient(145deg, #0a0e18 0%, #05080f 40%, #020408 100%);
+        radial-gradient(ellipse 100% 80% at 5% 20%, rgba(0, 180, 255, 0.85) 0%, transparent 45%),
+        radial-gradient(ellipse 80% 60% at 15% 50%, rgba(0, 100, 255, 0.55) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 50% at 8% 80%, rgba(40, 150, 255, 0.4) 0%, transparent 45%),
+        radial-gradient(ellipse 50% 40% at 25% 10%, rgba(0, 80, 200, 0.35) 0%, transparent 40%),
+        linear-gradient(165deg, #0a1425 0%, #040810 40%, #010305 100%);
       background-attachment: fixed;
-      position: relative;
     }
-
-    /* geometrické panely – imitace 3D polygonů */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background-image:
-        linear-gradient(160deg, transparent 40%, rgba(15, 25, 45, 0.9) 40.5%, rgba(8, 14, 28, 0.95) 70%, transparent 70.5%),
-        linear-gradient(200deg, transparent 55%, rgba(12, 20, 38, 0.85) 55.5%, rgba(6, 12, 24, 0.9) 85%, transparent 85.5%),
-        linear-gradient(120deg, transparent 65%, rgba(10, 18, 35, 0.8) 65.5%, transparent 90%);
-      opacity: 0.85;
+      background:
+        linear-gradient(150deg, transparent 35%, rgba(6, 12, 25, 0.95) 35.4%, rgba(4, 8, 18, 0.97) 58%, transparent 58.4%),
+        linear-gradient(200deg, transparent 48%, rgba(8, 14, 28, 0.92) 48.4%, rgba(3, 8, 16, 0.95) 75%, transparent 75.4%),
+        linear-gradient(120deg, transparent 62%, rgba(6, 12, 24, 0.88) 62.4%, transparent 88%);
     }
-
     body::after {
       content: "";
       position: fixed;
@@ -44,20 +40,8 @@
       z-index: 0;
       pointer-events: none;
       background:
-        repeating-linear-gradient(
-          -35deg,
-          transparent,
-          transparent 80px,
-          rgba(20, 40, 70, 0.08) 80px,
-          rgba(20, 40, 70, 0.08) 81px
-        ),
-        repeating-linear-gradient(
-          55deg,
-          transparent,
-          transparent 120px,
-          rgba(15, 30, 55, 0.06) 120px,
-          rgba(15, 30, 55, 0.06) 121px
-        );
+        repeating-linear-gradient(-30deg, transparent, transparent 100px, rgba(40, 80, 140, 0.15) 100px, rgba(40, 80, 140, 0.15) 101px),
+        repeating-linear-gradient(50deg, transparent, transparent 150px, rgba(25, 50, 90, 0.1) 150px, rgba(25, 50, 90, 0.1) 151px);
     }
 
     #welcome {
@@ -70,50 +54,31 @@
       text-align: center;
       z-index: 999;
       padding: 2rem;
-      background-color: #05080f;
+      background-color: #020508;
       background-image:
-        radial-gradient(ellipse 80% 60% at 15% 30%, rgba(0, 140, 255, 0.5) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 25% 70%, rgba(30, 100, 220, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse 40% 30% at 10% 50%, rgba(100, 200, 255, 0.22) 0%, transparent 45%),
-        linear-gradient(145deg, #0a0e18 0%, #05080f 40%, #020408 100%);
+        radial-gradient(ellipse 100% 80% at 5% 20%, rgba(0, 180, 255, 0.8) 0%, transparent 45%),
+        radial-gradient(ellipse 80% 60% at 15% 50%, rgba(0, 100, 255, 0.5) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 50% at 8% 80%, rgba(40, 150, 255, 0.35) 0%, transparent 45%),
+        linear-gradient(165deg, #0a1425 0%, #040810 40%, #010305 100%);
     }
     #welcome::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(3, 10, 22, 0.35);
+      background: rgba(2, 6, 14, 0.25);
       z-index: 0;
     }
     #welcome > * { position: relative; z-index: 1; }
-    #welcome h1 {
-      font-size: 2.4rem;
-      margin-bottom: 1rem;
-      color: #7ec8ff;
-    }
-    #welcome p {
-      font-size: 1.25rem;
-      color: #b8d4f0;
-      margin-bottom: 0.6rem;
-      max-width: 440px;
-    }
+    #welcome h1 { font-size: 2.4rem; margin-bottom: 1rem; color: #7ec8ff; }
+    #welcome p { font-size: 1.25rem; color: #b8d4f0; margin-bottom: 0.6rem; max-width: 440px; }
     #welcome .hint {
-      margin-top: 1.8rem;
-      font-size: 1.1rem;
-      color: #c5dcff;
-      background: rgba(0,0,0,0.5);
-      padding: 0.9rem 1.4rem;
-      border-radius: 10px;
-      border: 1px solid #2a5a9a;
+      margin-top: 1.8rem; font-size: 1.1rem; color: #c5dcff;
+      background: rgba(0,0,0,0.5); padding: 0.9rem 1.4rem;
+      border-radius: 10px; border: 1px solid #2a5a9a;
     }
     #welcome button {
-      margin-top: 2rem;
-      background: #1a6bbf;
-      color: white;
-      border: none;
-      padding: 0.9rem 2rem;
-      font-size: 1.15rem;
-      border-radius: 10px;
-      cursor: pointer;
+      margin-top: 2rem; background: #1a6bbf; color: white; border: none;
+      padding: 0.9rem 2rem; font-size: 1.15rem; border-radius: 10px; cursor: pointer;
     }
     #welcome button:hover { background: #2180e0; }
 
@@ -122,76 +87,31 @@
 
     .sidebar {
       width: 250px;
-      background: rgba(3, 12, 28, 0.88);
+      background: rgba(3, 10, 22, 0.92);
       border-right: 1px solid #1a4a7a;
       padding: 1.8rem 1rem;
-      position: fixed;
-      left: 0; top: 0; bottom: 0;
-      overflow-y: auto;
+      position: fixed; left: 0; top: 0; bottom: 0;
+      overflow-y: auto; z-index: 10;
       backdrop-filter: blur(8px);
-      z-index: 10;
     }
-    .sidebar .name {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #7ec8ff;
-      margin-bottom: 0.15rem;
-    }
-    .sidebar .sub {
-      color: #8ab0d4;
-      font-size: 0.95rem;
-      margin-bottom: 0.4rem;
-    }
-    .sidebar .webtitle {
-      color: #9ed0ff;
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-      opacity: 0.9;
-    }
+    .sidebar .name { font-size: 1.5rem; font-weight: bold; color: #7ec8ff; margin-bottom: 0.15rem; }
+    .sidebar .sub { color: #8ab0d4; font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .sidebar .webtitle { color: #9ed0ff; font-size: 0.9rem; margin-bottom: 1.5rem; opacity: 0.9; }
     .sidebar a {
-      display: block;
-      color: #b8d4f0;
-      text-decoration: none;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 0.3rem;
-      font-size: 1.05rem;
+      display: block; color: #b8d4f0; text-decoration: none;
+      padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 0.3rem; font-size: 1.05rem;
     }
-    .sidebar a:hover,
-    .sidebar a.active {
-      background: rgba(30, 100, 180, 0.45);
-      color: #fff;
-    }
+    .sidebar a:hover, .sidebar a.active { background: rgba(30, 100, 180, 0.45); color: #fff; }
 
-    .main {
-      margin-left: 250px;
-      padding: 2.2rem 2.5rem 3rem;
-      max-width: 740px;
-      position: relative;
-      z-index: 1;
-    }
+    .main { margin-left: 250px; padding: 2.2rem 2.5rem 3rem; max-width: 740px; position: relative; z-index: 1; }
 
     .section { display: none; }
     .section.active { display: block; }
-
-    .section h1 {
-      font-size: 1.9rem;
-      color: #7ec8ff;
-      margin-bottom: 1.2rem;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-    }
-    .section h2 {
-      font-size: 1.3rem;
-      color: #9ed0ff;
-      margin: 1.5rem 0 0.7rem;
-    }
-    .section p {
-      margin-bottom: 1rem;
-      color: #d0e4f8;
-      font-size: 1.08rem;
-    }
+    .section h1 { font-size: 1.9rem; color: #7ec8ff; margin-bottom: 1.2rem; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+    .section h2 { font-size: 1.3rem; color: #9ed0ff; margin: 1.5rem 0 0.7rem; }
+    .section p { margin-bottom: 1rem; color: #d0e4f8; font-size: 1.08rem; }
     .box {
-      background: rgba(8, 22, 48, 0.8);
+      background: rgba(6, 16, 36, 0.85);
       border: 1px solid #1a4a7a;
       border-radius: 12px;
       padding: 1.3rem 1.5rem;
@@ -199,40 +119,18 @@
       backdrop-filter: blur(6px);
     }
     ul { list-style: none; padding: 0; }
-    ul li {
-      padding: 0.4rem 0 0.4rem 1.3rem;
-      position: relative;
-      color: #d0e4f8;
-      font-size: 1.05rem;
-    }
-    ul li::before {
-      content: "-";
-      position: absolute;
-      left: 0;
-      color: #7ec8ff;
-    }
+    ul li { padding: 0.4rem 0 0.4rem 1.3rem; position: relative; color: #d0e4f8; font-size: 1.05rem; }
+    ul li::before { content: "-"; position: absolute; left: 0; color: #7ec8ff; }
     .bold { color: #9ed0ff; font-weight: bold; }
 
     .menu-btn {
-      display: none;
-      position: fixed;
-      top: 12px; left: 12px;
-      z-index: 200;
-      background: #0c3a6e;
-      color: white;
-      border: 1px solid #2a5a9a;
-      padding: 0.5rem 0.9rem;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      cursor: pointer;
+      display: none; position: fixed; top: 12px; left: 12px; z-index: 200;
+      background: #0c3a6e; color: white; border: 1px solid #2a5a9a;
+      padding: 0.5rem 0.9rem; border-radius: 8px; font-size: 1.2rem; cursor: pointer;
     }
 
     @media (max-width: 700px) {
-      .sidebar {
-        transform: translateX(-100%);
-        transition: 0.25s;
-        z-index: 150;
-      }
+      .sidebar { transform: translateX(-100%); transition: 0.25s; z-index: 150; }
       .sidebar.open { transform: translateX(0); }
       .main { margin-left: 0; padding: 4rem 1.2rem 2rem; }
       .menu-btn { display: block; }
@@ -456,7 +354,6 @@
       document.getElementById('welcome').style.display = 'none';
       document.getElementById('layout').classList.add('show');
     }
-
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && (e.key === 'r' || e.key === 'R')) {
         if (document.getElementById('welcome').style.display !== 'none') {
@@ -465,7 +362,6 @@
         }
       }
     });
-
     function ukaz(id, el) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
