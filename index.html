@@ -17,10 +17,10 @@
       --border-strong: rgba(80, 170, 255, 0.45);
       --text: #e2eefc;
       --text-muted: #9bb8d9;
-      --accent: #38bdf8;
-      --accent-soft: #7dd3fc;
-      --accent-dark: #0ea5e9;
-      --glow: rgba(56, 189, 248, 0.35);
+      --accent: #a78bfa;
+      --accent-soft: #c4b5fd;
+      --accent-dark: #8b5cf6;
+      --glow: rgba(167, 139, 250, 0.4);
     }
 
     body {
@@ -112,7 +112,7 @@
     }
     #welcome button {
       margin-top: 2rem;
-      background: linear-gradient(135deg, var(--accent-dark), #0284c7);
+      background: linear-gradient(135deg, #8b5cf6, #ec4899);
       color: white;
       border: none;
       padding: 0.95rem 2.2rem;
@@ -121,12 +121,12 @@
       font-family: inherit;
       border-radius: 12px;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.35);
+      box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
       transition: transform 0.15s, box-shadow 0.15s;
     }
     #welcome button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(14, 165, 233, 0.5);
+      box-shadow: 0 6px 28px rgba(168, 85, 247, 0.55);
     }
 
     .layout { display: none; min-height: 100vh; position: relative; z-index: 1; }
@@ -268,7 +268,7 @@
     .progress-fill {
       height: 100%;
       border-radius: 999px;
-      background: linear-gradient(90deg, #0284c7, #38bdf8, #7dd3fc);
+      background: linear-gradient(90deg, #7c3aed, #a855f7, #ec4899);
       box-shadow: 0 0 12px var(--glow);
       transition: width 0.6s ease;
     }
@@ -310,6 +310,7 @@
 <body>
 
   <div id="welcome">
+    <div style="display:inline-block;background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;font-size:0.85rem;font-weight:700;padding:0.4rem 1rem;border-radius:999px;margin-bottom:1.2rem;letter-spacing:0.05em;">NOVÝ DESIGN</div>
     <h1>Vítej na mém webu</h1>
     <p>Ahoj, já jsem Adam Sanchez.</p>
     <p>Tady najdeš něco o mně, o sportu, sboru a hrách.</p>
