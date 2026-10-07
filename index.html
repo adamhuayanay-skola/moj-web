@@ -3,404 +3,375 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adam Sanchez – Portfolio</title>
+  <title>Adam Sanchez</title>
   <style>
-    :root {
-      --bg: #0b1220;
-      --sidebar: #0f172a;
-      --card: #1e293b;
-      --accent: #38bdf8;
-      --accent2: #22d3ee;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --border: #334155;
-    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(ellipse at center, #0a3d7a 0%, #061530 45%, #020810 100%);
+      background-attachment: fixed;
+      color: #e8f0ff;
       min-height: 100vh;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    /* WELCOME SCREEN */
+    #welcome {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, #0c4a8f 0%, #061530 50%, #01060f 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 999;
+      padding: 2rem;
+    }
+    #welcome h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      color: #7ec8ff;
+    }
+    #welcome p {
+      font-size: 1.25rem;
+      color: #b8d4f0;
+      margin-bottom: 0.6rem;
+      max-width: 420px;
+    }
+    #welcome .hint {
+      margin-top: 1.8rem;
+      font-size: 1.1rem;
+      color: # dec1ff;
+      background: rgba(0,0,0,0.35);
+      padding: 0.9rem 1.4rem;
+      border-radius: 10px;
+      border: 1px solid #2a5a9a;
+    }
+    #welcome button {
+      margin-top: 2rem;
+      background: #1a6bbf;
+      color: white;
+      border: none;
+      padding: 0.9rem 2rem;
+      font-size: 1.15rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    #welcome button:hover {
+      background: #2180e0;
+    }
+
+    /* LAYOUT */
+    .layout {
+      display: none;
+      min-height: 100vh;
+    }
+    .layout.show {
       display: flex;
     }
 
     .sidebar {
-      width: 270px;
-      min-height: 100vh;
-      background: var(--sidebar);
-      border-right: 1px solid var(--border);
-      padding: 2rem 1.1rem;
+      width: 240px;
+      background: rgba(3, 18, 40, 0.92);
+      border-right: 1px solid #1a4a7a;
+      padding: 1.8rem 1rem;
       position: fixed;
-      left: 0; top: 0;
-      display: flex;
-      flex-direction: column;
-      z-index: 100;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      overflow-y: auto;
     }
-    .sidebar .logo {
-      font-size: 1.55rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.25rem;
+    .sidebar .name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #7ec8ff;
+      margin-bottom: 0.2rem;
     }
-    .sidebar .subtitle {
-      color: var(--muted);
-      font-size: 0.85rem;
-      margin-bottom: 2rem;
-    }
-    .sidebar nav a {
-      display: block;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 0.72rem 1rem;
-      border-radius: 10px;
-      margin-bottom: 0.3rem;
+    .sidebar .sub {
+      color: #8ab0d4;
       font-size: 0.95rem;
-      transition: all 0.2s;
+      margin-bottom: 1.8rem;
     }
-    .sidebar nav a:hover,
-    .sidebar nav a.active {
-      background: #1e293b;
-      color: var(--accent);
+    .sidebar a {
+      display: block;
+      color: #b8d4f0;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.3rem;
+      font-size: 1.05rem;
     }
-    .sidebar nav a span { margin-right: 0.55rem; }
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: rgba(30, 100, 180, 0.4);
+      color: #fff;
+    }
 
     .main {
-      margin-left: 270px;
-      flex: 1;
-      padding: 2.5rem 2.8rem 3.5rem;
-      max-width: 780px;
+      margin-left: 240px;
+      padding: 2.2rem 2.5rem 3rem;
+      max-width: 720px;
     }
-    .section { display: none; animation: fadeIn 0.3s ease; }
+
+    .section { display: none; }
     .section.active { display: block; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+
     .section h1 {
       font-size: 1.9rem;
-      margin-bottom: 1.3rem;
-      color: var(--accent);
+      color: #7ec8ff;
+      margin-bottom: 1.2rem;
     }
     .section h2 {
-      font-size: 1.2rem;
-      color: var(--accent2);
-      margin: 1.7rem 0 0.75rem;
+      font-size: 1.3rem;
+      color: #9ed0ff;
+      margin: 1.5rem 0 0.7rem;
     }
     .section p {
-      color: #cbd5e1;
       margin-bottom: 1rem;
+      color: #d0e4f8;
+      font-size: 1.08rem;
     }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.5rem 1.7rem;
-      margin-bottom: 1.15rem;
+    .box {
+      background: rgba(8, 30, 60, 0.75);
+      border: 1px solid #1a4a7a;
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      margin-bottom: 1.1rem;
     }
-    ul { list-style: none; padding-left: 0; margin-bottom: 0.8rem; }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
     ul li {
-      padding: 0.4rem 0 0.4rem 1.5rem;
+      padding: 0.4rem 0 0.4rem 1.3rem;
       position: relative;
-      color: #cbd5e1;
+      color: #d0e4f8;
+      font-size: 1.05rem;
     }
     ul li::before {
-      content: "→";
+      content: "-";
       position: absolute;
       left: 0;
-      color: var(--accent2);
+      color: #7ec8ff;
     }
-    .tag {
-      display: inline-block;
-      background: #0ea5e9;
-      color: white;
-      font-size: 0.78rem;
-      padding: 0.28rem 0.75rem;
-      border-radius: 999px;
-      margin: 0.25rem 0.3rem 0.25rem 0;
-    }
-    .highlight { color: var(--accent); font-weight: 600; }
+    .bold { color: #9ed0ff; font-weight: bold; }
 
-    .menu-toggle {
+    .menu-btn {
       display: none;
       position: fixed;
-      top: 1rem; left: 1rem;
+      top: 12px;
+      left: 12px;
       z-index: 200;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.5rem 0.85rem;
+      background: #0c3a6e;
+      color: white;
+      border: 1px solid #2a5a9a;
+      padding: 0.5rem 0.9rem;
       border-radius: 8px;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       cursor: pointer;
     }
-    @media (max-width: 780px) {
-      .sidebar { transform: translateX(-100%); transition: transform 0.3s; }
+
+    @media (max-width: 700px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: 0.25s;
+        z-index: 150;
+      }
       .sidebar.open { transform: translateX(0); }
-      .main { margin-left: 0; padding: 4.5rem 1.3rem 2.5rem; }
-      .menu-toggle { display: block; }
+      .main { margin-left: 0; padding: 4rem 1.2rem 2rem; }
+      .menu-btn { display: block; }
+      #welcome h1 { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+  <!-- UVITACI OBRAZOVKA -->
+  <div id="welcome">
+    <h1>Vitej na me web strance</h1>
+    <p>Ahoj, ja jsem Adam Sanchez.</p>
+    <p>Tady najdes neco o mne, o sportu, sboru a hrach.</p>
+    <div class="hint">
+      Zmackni <strong>Ctrl + R</strong> (nebo klikni na tlacitko dole),<br>
+      aby se otevrel obsah stranky.
+    </div>
+    <button onclick="otevrit()">Otevrit obsah</button>
+  </div>
 
-  <aside class="sidebar">
-    <div class="logo">Adam Sanchez</div>
-    <div class="subtitle">13 let · Hradec Králové</div>
-    <nav>
-      <a href="#" class="active" onclick="showSection('omne', this)"><span>👋</span> O mně</a>
-      <a href="#" onclick="showSection('sport', this)"><span>🏃</span> Sport</a>
-      <a href="#" onclick="showSection('zpev', this)"><span>🎤</span> Zpěv</a>
-      <a href="#" onclick="showSection('hry', this)"><span>🎮</span> Videohry</a>
-      <a href="#" onclick="showSection('uspechy', this)"><span>🏆</span> Úspěchy</a>
-      <a href="#" onclick="showSection('cile', this)"><span>🚀</span> Cíle & výzvy</a>
-      <a href="#" onclick="showSection('zlepseni', this)"><span>📈</span> Co zlepšuji</a>
-    </nav>
-  </aside>
+  <button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">Menu</button>
 
-  <main class="main">
+  <div class="layout" id="layout">
+    <aside class="sidebar">
+      <div class="name">Adam Sanchez</div>
+      <div class="sub">13 let, Hradec Kralove</div>
+      <a href="#" class="active" onclick="ukaz('omne', this)">O mne</a>
+      <a href="#" onclick="ukaz('sport', this)">Sport</a>
+      <a href="#" onclick="ukaz('zpev', this)">Zpev</a>
+      <a href="#" onclick="ukaz('hry', this)">Videohry</a>
+      <a href="#" onclick="ukaz('uspechy', this)">Uspechy</a>
+      <a href="#" onclick="ukaz('cile', this)">Cile</a>
+      <a href="#" onclick="ukaz('zlepseni', this)">Co zlepsuju</a>
+    </aside>
 
-    <!-- O MNĚ -->
-    <section id="omne" class="section active">
-      <h1>👋 O mně</h1>
-      <div class="card">
-        <p>
-          Jmenuju se <span class="highlight">Adam Sanchez</span>. Pocházím z Česka, ale můj táta je z Peru.
-          V Česku žiju už <strong>11 let</strong> a bydlím v <strong>Hradci Králové</strong>. Je mi 13 let.
-        </p>
-        <p>
-          Mám rád aktivní život. Nejvíc mě baví sporty – hlavně plavání a běh na dlouhé vzdálenosti.
-          Zároveň rád hraju videohry a zpívám ve sboru. Snažím se pořád něco zlepšovat,
-          ať už ve sportu, ve hrách nebo v tom, co dělám ve sboru.
-        </p>
-        <p>
-          Nejsem typ člověka, který se vzdává, když něco nejde hned. Radši trénuju, zkouším znovu
-          a hledám, jak se posunout dál. Baví mě, když vidím, že se díky cvičení nebo opakování zlepšuju.
-        </p>
-      </div>
+    <main class="main">
 
-      <h2>Co mě charakterizuje</h2>
-      <div class="card">
-        <ul>
-          <li><strong>Vytrvalost</strong> – dokážu běžet dlouhé vzdálenosti a nevzdávám to, i když je to těžké</li>
-          <li><strong>Sportovní duch</strong> – plavání, běh a pohyb jsou pro mě důležitou součástí života</li>
-          <li><strong>Hudba a zpěv</strong> – jsem součástí prestižního sboru Boni Pueri, zpívám soprán</li>
-          <li><strong>Herní ambice</strong> – mám jasné cíle ve Fortnite, Geometry Dash i Clash Royale</li>
-          <li><strong>Chuť učit druhé</strong> – pomáhám s výukou plavání na Vlnce</li>
-        </ul>
-      </div>
-    </section>
+      <section id="omne" class="section active">
+        <h1>O mne</h1>
+        <div class="box">
+          <p>Jmenuju se <span class="bold">Adam Sanchez</span>. Pochazim z Ceska, ale tata je z Peru. V Cesku ziju uz 11 let a bydlim v Hradci Kralove. Je mi 13 let.</p>
+          <p>Mam rad sporty, hlavne plavani a beh do dalky. Taky rad hraju videohry a zpivam ve sboru Boni Pueri. Sna zim se porad neco zlepsovat.</p>
+          <p>Nejsem typ co se vzdava kdyz neco nejde hned. Radsi trenuju a zkousim to znovu.</p>
+        </div>
+        <h2>Co me bavi a v cem jsem dobry</h2>
+        <div class="box">
+          <ul>
+            <li>Plavani a beh na dlouhe vzdalenosti</li>
+            <li>Zpev ve sboru (sopran)</li>
+            <li>Videohry (Fortnite, Geometry Dash, Minecraft...)</li>
+            <li>Ucit druhe plavat na Vlnce</li>
+            <li>Nevzdat to kdyz je neco tezky</li>
+          </ul>
+        </div>
+      </section>
 
-    <!-- SPORT -->
-    <section id="sport" class="section">
-      <h1>🏃 Sport</h1>
-      <div class="card">
-        <p>
-          Sport je pro mě velká část života. Umím dobře sporty – hlavně <strong>plavání</strong>
-          a <strong>běh do dálky</strong>. Pohyb mě baví a snažím se v něm pořád posouvat.
-        </p>
-      </div>
+      <section id="sport" class="section">
+        <h1>Sport</h1>
+        <div class="box">
+          <p>Sport je pro me dulezity. Umim dobre plavat a bezet do dalky.</p>
+        </div>
+        <h2>Beh</h2>
+        <div class="box">
+          <p>Chodil jsem na atletiku, ale nebavilo me to protoze jsem musel na zavody a to me nebavilo. Ale beham furt, jenom sam. Vetsinou na Milade na kolecku.</p>
+          <p>Muj rekord je asi <span class="bold">15 km</span> bez zastaveni. Ted pracuju na tom abych bezel jeste dal a lepe.</p>
+        </div>
+        <h2>Plavani</h2>
+        <div class="box">
+          <p>Plavat se ucim na Vlnce. Jezdim tam priblizne kazdy rok o prazdninach. Plavani mi jde a dokonce uz i ucim druhe – pomaham s vyukou plavani.</p>
+        </div>
+      </section>
 
-      <h2>Běh</h2>
-      <div class="card">
-        <p>
-          Chodil jsem na atletiku, ale nebavilo mě to kvůli závodům. Musel jsem jezdit na závody
-          a to mě prostě nebavilo. Běhání samotné ale miluju, tak jsem si našel vlastní způsob.
-        </p>
-        <p>
-          Teď běhám hlavně sám. Nejčastěji na <strong>Miladě</strong> – na kolečku kolem přehrady.
-          Můj současný rekord bez zastavení je přibližně <span class="highlight">15 kilometrů</span>
-          (asi 15 km za hodinu v kuse).
-        </p>
-        <p>
-          Aktuálně pracuju na lepším výkonu v běhu. Chci běžet ještě dál a mít z toho dobrý pocit.
-          Můj hlavní cíl je běžet co nejdál.
-        </p>
-      </div>
+      <section id="zpev" class="section">
+        <h1>Zpev</h1>
+        <div class="box">
+          <p>Chodim do sboru <span class="bold">Boni Pueri</span>. Jsem v hlavnim sboru a zpivam sopran.</p>
+          <p>Dostal jsem se tam jako jeden z nejlepsich. Je to pro me velka vec a bavi me to.</p>
+        </div>
+        <h2>Mutace hlasu</h2>
+        <div class="box">
+          <p>Ted mutuju, takze se mi meni hlas. Pro soprana je to trochu problem, ale nevzdavam to. Se sborem budu dokud mi bezi smlouva a chci to zvladnout.</p>
+        </div>
+      </section>
 
-      <h2>Plavání</h2>
-      <div class="card">
-        <p>
-          Plavat se učím na <strong>Vlnce</strong>. Jezdím tam přibližně každý rok o prázdninách.
-          Plavání mi jde a dokonce už i <strong>učím druhé</strong> – pomáhám s výukou plavání.
-        </p>
-        <p>
-          Baví mě, že u plavání člověk musí mít techniku i výdrž. A když něco naučíš někoho jiného,
-          je z toho ještě lepší pocit. Jsem na to hrdý, že můžu pomáhat.
-        </p>
-      </div>
-    </section>
+      <section id="hry" class="section">
+        <h1>Videohry</h1>
+        <div class="box">
+          <p>Rad hraju videohry. Hraju Fortnite, Geometry Dash, Brawlhalla, Brawl Stars, Minecraft a Clash Royale.</p>
+        </div>
+        <h2>Moje cile ve hrach</h2>
+        <div class="box">
+          <ul>
+            <li>Fortnite – chci dat Unreal Legends</li>
+            <li>Geometry Dash – chci dat Tidal Wave</li>
+            <li>Clash Royale – chci 10 000 trofeji</li>
+          </ul>
+        </div>
+        <h2>Na cem ted pracuju</h2>
+        <div class="box">
+          <ul>
+            <li>Zlepsit Fortnite skill</li>
+            <li>Minecraft spear + mace</li>
+            <li>Byt lepsi celkově v ranked</li>
+          </ul>
+        </div>
+      </section>
 
-    <!-- ZPĚV -->
-    <section id="zpev" class="section">
-      <h1>🎤 Zpěv</h1>
-      <div class="card">
-        <p>
-          Chodím do sboru <span class="highlight">Boni Pueri</span>. Jsem v <strong>hlavním sboru</strong>
-          a zpívám <strong>soprán</strong>.
-        </p>
-        <p>
-          Do sboru jsem se dostal jako jeden z nejlepších. Je to pro mě velká čest a zároveň
-          velká zodpovědnost. Zpěv mě baví a sbor je pro mě důležitá parta i zkušenost.
-        </p>
-      </div>
+      <section id="uspechy" class="section">
+        <h1>Uspechy</h1>
+        <div class="box">
+          <ul>
+            <li>Dostal jsem se do sboru Boni Pueri jako jeden z nejlepsich</li>
+            <li>Zpivam v hlavnim sboru (sopran)</li>
+            <li>Ucim plavani na Vlnce</li>
+            <li>Beh – asi 15 km bez zastaveni</li>
+          </ul>
+        </div>
+        <div class="box">
+          <p>Jsem na to hrdý, protoze za tim je prace. Kdyz neco chci, tak si za tim jdu.</p>
+        </div>
+      </section>
 
-      <h2>Mutace hlasu</h2>
-      <div class="card">
-        <p>
-          Teď mutuju – procházím mutací hlasu. Pro sopranistu je to výzva, protože hlas se mění
-          a někdy to není jednoduché. Ale nevzdávám to.
-        </p>
-        <p>
-          Se sborem budu, dokud mi běží smlouva. Chci ve sboru zůstat co nejdéle a dál se zlepšovat,
-          i když se hlas mění. Beru to jako další výzvu, kterou chci zvládnout.
-        </p>
-      </div>
-    </section>
+      <section id="cile" class="section">
+        <h1>Cile</h1>
+        <div class="box">
+          <p>Muj hlavni cil je <span class="bold">bezet co nejdal</span>. Chci mit vydrz a porad se zlepsovat.</p>
+        </div>
+        <h2>Dalsi cile</h2>
+        <div class="box">
+          <ul>
+            <li>Delsi beh nez 15 km</li>
+            <li>Fortnite Unreal Legends</li>
+            <li>Geometry Dash Tidal Wave</li>
+            <li>Clash Royale 10k trofeji</li>
+            <li>Zvladnout mutaci a zustat ve sboru</li>
+          </ul>
+        </div>
+      </section>
 
-    <!-- HRY -->
-    <section id="hry" class="section">
-      <h1>🎮 Videohry</h1>
-      <div class="card">
-        <p>
-          Rád hraju videohry. Hraju pravidelně a mám v nich jasné cíle.
-          Baví mě soutěžit sám se sebou a posouvat svoje limity.
-        </p>
-      </div>
+      <section id="zlepseni" class="section">
+        <h1>Co zlepsuju</h1>
+        <div class="box">
+          <p>Porad je neco na cem chci pracovat:</p>
+        </div>
+        <h2>Sport</h2>
+        <div class="box">
+          <ul>
+            <li>Beh na delsi vzdalenosti</li>
+            <li>Lepsí tempo</li>
+            <li>Pravidelne trenovat</li>
+          </ul>
+        </div>
+        <h2>Hry</h2>
+        <div class="box">
+          <ul>
+            <li>Fortnite skill</li>
+            <li>Minecraft spear + mace</li>
+          </ul>
+        </div>
+        <h2>Ostatni</h2>
+        <div class="box">
+          <ul>
+            <li>Mutace hlasu ve sboru</li>
+            <li>Byt trpelivy kdyz neco nejde hned</li>
+          </ul>
+        </div>
+      </section>
 
-      <h2>Hry, které hraju</h2>
-      <div class="card">
-        <span class="tag">Fortnite</span>
-        <span class="tag">Geometry Dash</span>
-        <span class="tag">Brawlhalla</span>
-        <span class="tag">Brawl Stars</span>
-        <span class="tag">Minecraft</span>
-        <span class="tag">Clash Royale</span>
-      </div>
-
-      <h2>Herní cíle</h2>
-      <div class="card">
-        <ul>
-          <li><strong>Fortnite</strong> – chci dát rank <span class="highlight">Unreal Legends</span></li>
-          <li><strong>Geometry Dash</strong> – chci dát level <span class="highlight">Tidal Wave</span></li>
-          <li><strong>Clash Royale</strong> – chci dosáhnout <span class="highlight">10 000 trofejí</span></li>
-        </ul>
-      </div>
-
-      <h2>Na čem teď pracuju</h2>
-      <div class="card">
-        <p>Potřebuju zlepšit:</p>
-        <ul>
-          <li><strong>Fortnite skill</strong> – mechaniky, aim, rozhodování ve hře</li>
-          <li><strong>Minecraft</strong> – spear + mace combo</li>
-          <li>Stabilnější výkon v ranked hrách celkově</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ÚSPĚCHY -->
-    <section id="uspechy" class="section">
-      <h1>🏆 Úspěchy & věci, na které jsem hrdý</h1>
-      <div class="card">
-        <ul>
-          <li>Dostal jsem se do sboru <strong>Boni Pueri</strong> jako jeden z nejlepších</li>
-          <li>Zpívám v hlavním sboru jako soprán</li>
-          <li>Učím plavání na Vlnce a pomáhám ostatním se zlepšovat</li>
-          <li>Běžecký rekord: přibližně <strong>15 km</strong> bez zastavení</li>
-          <li>Dokážu se zlepšovat i v věcech, které mi ze začátku nejdou</li>
-        </ul>
-      </div>
-
-      <h2>Proč jsou pro mě důležité</h2>
-      <div class="card">
-        <p>
-          Úspěchy pro mě nejsou jen čísla nebo diplomy. Jsou to důkazy, že když něco chci
-          a jdu si za tím, tak se to dá zvládnout. Ať už je to místo ve sboru, delší běh
-          nebo lepší skill ve hře – vždycky za tím stojí práce a vytrvalost.
-        </p>
-      </div>
-    </section>
-
-    <!-- CÍLE -->
-    <section id="cile" class="section">
-      <h1>🚀 Cíle & výzvy</h1>
-      <div class="card">
-        <p>
-          Můj hlavní cíl je <span class="highlight">běžet co nejdál</span>. Chci mít výdrž, sílu
-          a hlavně radost z pohybu. Zároveň mám cíle i ve hrách a ve sboru.
-        </p>
-      </div>
-
-      <h2>Konkrétní cíle</h2>
-      <div class="card">
-        <ul>
-          <li>Prodloužit běžecký rekord (teď cca 15 km bez zastavení)</li>
-          <li>Zlepšit tempo a celkovou běžeckou formu</li>
-          <li>Fortnite → Unreal Legends</li>
-          <li>Geometry Dash → Tidal Wave</li>
-          <li>Clash Royale → 10 000 trofejí</li>
-          <li>Zvládnout mutaci hlasu a zůstat aktivní ve sboru Boni Pueri</li>
-        </ul>
-      </div>
-
-      <h2>Jak k tomu přistupuju</h2>
-      <div class="card">
-        <p>
-          Nesnažím se všechno najednou. Beru to postupně – trénuju, zkouším, opravuju chyby
-          a jdu dál. Nejdůležitější je nevzdat to, když to zrovna nejde. To je pro mě klíč.
-        </p>
-      </div>
-    </section>
-
-    <!-- CO ZLEPŠUJI -->
-    <section id="zlepseni" class="section">
-      <h1>📈 Co právě zlepšuji</h1>
-      <div class="card">
-        <p>
-          Pořád je něco, na čem chci pracovat. Tady je seznam věcí, kterým se teď věnuju
-          a chci se v nich posunout:
-        </p>
-      </div>
-
-      <h2>Sport</h2>
-      <div class="card">
-        <ul>
-          <li>Běh na delší vzdálenosti (můj rekord je teď cca 15 km)</li>
-          <li>Lepší tempo a výdrž</li>
-          <li>Pravidelnost tréninků – běhám hlavně sám na Miladě</li>
-        </ul>
-      </div>
-
-      <h2>Hry</h2>
-      <div class="card">
-        <ul>
-          <li>Fortnite skill – mechaniky, aim a rozhodování</li>
-          <li>Minecraft – spear + mace combo</li>
-          <li>Stabilnější výsledky v ranked hrách</li>
-        </ul>
-      </div>
-
-      <h2>Osobní</h2>
-      <div class="card">
-        <ul>
-          <li>Přizpůsobení se mutaci hlasu ve sboru Boni Pueri</li>
-          <li>Trpělivost, když něco nejde hned</li>
-          <li>Učit se z chyb místo toho, abych se jich bál</li>
-        </ul>
-      </div>
-    </section>
-
-  </main>
+    </main>
+  </div>
 
   <script>
-    function showSection(id, el) {
+    function otevrit() {
+      document.getElementById('welcome').style.display = 'none';
+      document.getElementById('layout').classList.add('show');
+    }
+
+    // Ctrl + R otevre obsah misto reloadu (kdyz je welcome)
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'r' || e.key === 'R')) {
+        if (document.getElementById('welcome').style.display !== 'none') {
+          e.preventDefault();
+          otevrit();
+        }
+      }
+    });
+
+    function ukaz(id, el) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-      document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
+      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
       if (el) el.classList.add('active');
       document.querySelector('.sidebar').classList.remove('open');
     }
