@@ -123,6 +123,22 @@
     ul li::before { content: "-"; position: absolute; left: 0; color: #7ec8ff; }
     .bold { color: #9ed0ff; font-weight: bold; }
 
+    .progress-wrap { margin: 0.8rem 0 1.1rem; }
+    .progress-label {
+      display: flex; justify-content: space-between;
+      font-size: 1.02rem; margin-bottom: 0.35rem; color: #d0e4f8;
+    }
+    .progress-bar {
+      height: 14px; background: rgba(0,0,0,0.4);
+      border-radius: 8px; overflow: hidden;
+      border: 1px solid #1a4a7a;
+    }
+    .progress-fill {
+      height: 100%; border-radius: 8px;
+      background: linear-gradient(90deg, #1a6bbf, #4db8ff);
+    }
+    .pct { color: #9ed0ff; font-weight: bold; }
+
     .menu-btn {
       display: none; position: fixed; top: 12px; left: 12px; z-index: 200;
       background: #0c3a6e; color: white; border: 1px solid #2a5a9a;
@@ -249,12 +265,30 @@
             <li>Clash Royale</li>
           </ul>
         </div>
+        <h2>Můj aktuální progress</h2>
+        <div class="box">
+          <p><span class="bold">Fortnite</span> – teď mám rank <span class="bold">Diamond 3</span>. Cíl je Unreal Legends.</p>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Progress k Unreal Legends</span><span class="pct">cca 55 %</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
+          </div>
+          <p><span class="bold">Geometry Dash</span> – na levelu <span class="bold">Tidal Wave</span> mám hotovo <span class="bold">43 %</span>.</p>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Tidal Wave</span><span class="pct">43 %</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:43%"></div></div>
+          </div>
+          <p><span class="bold">Clash Royale</span> – teď mám <span class="bold">7 000 trofejí</span>. Cíl je 10 000.</p>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Trofeje (7 000 / 10 000)</span><span class="pct">70 %</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+          </div>
+        </div>
         <h2>Moje cíle ve hrách</h2>
         <div class="box">
           <ul>
-            <li>Fortnite – chci dát rank <span class="bold">Unreal Legends</span></li>
-            <li>Geometry Dash – chci dát level <span class="bold">Tidal Wave</span></li>
-            <li>Clash Royale – chci dosáhnout <span class="bold">10 000 trofejí</span></li>
+            <li>Fortnite – z Diamond 3 na rank <span class="bold">Unreal Legends</span> (teď cca 55 %)</li>
+            <li>Geometry Dash – dokončit level <span class="bold">Tidal Wave</span> (teď 43 %)</li>
+            <li>Clash Royale – dosáhnout <span class="bold">10 000 trofejí</span> (teď 7 000 = 70 %)</li>
           </ul>
         </div>
         <h2>Na čem teď pracuju</h2>
@@ -298,9 +332,9 @@
           <ul>
             <li>Prodloužit běžecký rekord (teď cca 15 km bez zastavení)</li>
             <li>Zlepšit tempo a celkovou běžeckou formu</li>
-            <li>Fortnite → Unreal Legends</li>
-            <li>Geometry Dash → Tidal Wave</li>
-            <li>Clash Royale → 10 000 trofejí</li>
+            <li>Fortnite → Unreal Legends (teď Diamond 3, cca 55 %)</li>
+            <li>Geometry Dash → Tidal Wave (teď 43 %)</li>
+            <li>Clash Royale → 10 000 trofejí (teď 7 000 = 70 %)</li>
             <li>Zvládnout mutaci hlasu a zůstat aktivní ve sboru Boni Pueri</li>
           </ul>
         </div>
