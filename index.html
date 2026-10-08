@@ -305,6 +305,63 @@
       #welcome h1 { font-size: 1.9rem; }
       .section h1 { font-size: 1.7rem; }
     }
+
+    .goal-map {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .goal-card {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+    }
+    .goal-card .goal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.55rem;
+    }
+    .goal-card .goal-name {
+      font-weight: 600;
+      color: var(--accent-soft);
+      font-size: 1.08rem;
+    }
+    .goal-card .goal-diff {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+    .goal-card .goal-diff strong {
+      color: var(--accent-soft);
+    }
+    .goal-meta {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .diff-bar {
+      height: 10px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-top: 0.35rem;
+    }
+    .diff-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #22c55e, #eab308, #ef4444);
+    }
+    .diff-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
   </style>
 </head>
 <body>
@@ -438,13 +495,38 @@
             <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
           </div>
         </div>
-        <h2>Moje cíle ve hrách</h2>
+        <h2>Mapa herních cílů</h2>
         <div class="box">
-          <ul>
-            <li>Fortnite – z Diamond 3 na rank <span class="bold">Unreal Legends</span> (teď cca 55 %) · obtížnost <span class="bold">82 / 100</span></li>
-            <li>Geometry Dash – dokončit level <span class="bold">Tidal Wave</span> (teď 43 %) · obtížnost <span class="bold">95 / 100</span></li>
-            <li>Clash Royale – dosáhnout <span class="bold">10 000 trofejí</span> (teď 7 000 = 70 %) · obtížnost <span class="bold">75 / 100</span></li>
-          </ul>
+          <p style="margin-bottom:1rem;color:var(--text-muted);font-size:0.98rem;">Tady je mapa mých hlavních cílů ve hrách – progress a jak těžké to je (0–100).</p>
+          <div class="goal-map">
+            <div class="goal-card">
+              <div class="goal-top">
+                <span class="goal-name">Fortnite → Unreal Legends</span>
+                <span class="goal-diff">obtížnost <strong>82 / 100</strong></span>
+              </div>
+              <div class="goal-meta">Teď: Diamond 3 · progress cca <span class="bold">55 %</span></div>
+              <div class="diff-bar"><div class="diff-fill" style="width:82%"></div></div>
+              <div class="diff-label"><span>snadné</span><span>těžké</span></div>
+            </div>
+            <div class="goal-card">
+              <div class="goal-top">
+                <span class="goal-name">Geometry Dash → Tidal Wave</span>
+                <span class="goal-diff">obtížnost <strong>95 / 100</strong></span>
+              </div>
+              <div class="goal-meta">Hotovo: <span class="bold">43 %</span> levelu</div>
+              <div class="diff-bar"><div class="diff-fill" style="width:95%"></div></div>
+              <div class="diff-label"><span>snadné</span><span>těžké</span></div>
+            </div>
+            <div class="goal-card">
+              <div class="goal-top">
+                <span class="goal-name">Clash Royale → 10 000 trofejí</span>
+                <span class="goal-diff">obtížnost <strong>75 / 100</strong></span>
+              </div>
+              <div class="goal-meta">Teď: 7 000 trofejí · progress <span class="bold">70 %</span></div>
+              <div class="diff-bar"><div class="diff-fill" style="width:75%"></div></div>
+              <div class="diff-label"><span>snadné</span><span>těžké</span></div>
+            </div>
+          </div>
         </div>
         <h2>Na čem teď pracuju</h2>
         <div class="box">
