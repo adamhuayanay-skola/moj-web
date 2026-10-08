@@ -362,6 +362,50 @@
       color: var(--text-muted);
       margin-top: 0.25rem;
     }
+
+    .timeline {
+      position: relative;
+      padding-left: 1.6rem;
+      margin: 0.5rem 0 0.3rem;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      bottom: 6px;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent), rgba(56,189,248,0.15));
+      border-radius: 2px;
+    }
+    .tl-item {
+      position: relative;
+      padding-bottom: 1.15rem;
+    }
+    .tl-item:last-child { padding-bottom: 0.2rem; }
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -1.35rem;
+      top: 0.35rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--glow);
+      border: 2px solid rgba(255,255,255,0.25);
+    }
+    .tl-age {
+      font-weight: 700;
+      color: var(--accent-soft);
+      font-size: 1.02rem;
+      margin-bottom: 0.2rem;
+    }
+    .tl-text {
+      color: var(--text);
+      font-size: 1.02rem;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
@@ -415,6 +459,40 @@
             <li>Trénovat sám a posouvat svoje limity</li>
           </ul>
         </div>
+        <h2>Osa mého života</h2>
+        <div class="box">
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-age">0 let – narození</div>
+              <div class="tl-text">Narodil jsem se v Hradci Králové. Hned potom jsme odjeli do Peru.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-age">2 roky – návrat</div>
+              <div class="tl-text">Po dvou letech v Peru jsme se vrátili zpátky do Česka. Od té doby bydlím v Hradci Králové.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-age">4 roky – sbor a plavání</div>
+              <div class="tl-text">Začal jsem chodit do sboru Boni Pueri. Ve stejném věku jsem začal plavat – plavání jsem dělal asi 3 roky a pak jsem začal jezdit na plavecké tábory každé prázdniny, až dodnes.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-age">5 let – atletika</div>
+              <div class="tl-text">Šel jsem na atletiku. Běhání mě bavilo, ale závody už méně.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-age">10 let – konec atletiky</div>
+              <div class="tl-text">S atletikou jsem skončil. Běhat jsem ale nepřestal – dál běhám sám.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-age">12 let – krátký návrat</div>
+              <div class="tl-text">Zkusil jsem atletiku znovu, ale hned jsem zase odešel. Závodění mi prostě nesedí.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-age">13 let – teď</div>
+              <div class="tl-text">Pořád zpívám v Boni Pueri, běhám na dlouhé tratě, plavu a jezdím na plavecké tábory, hraju hry a učím se pořád něco nového.</div>
+            </div>
+          </div>
+        </div>
+
         <h2>Jak trávím čas</h2>
         <div class="box">
           <p>Když nejsem ve škole, často běhám na Miladě, hraju hry nebo jsem se sborem. O prázdninách jezdím na Vlnku plavat a pomáhám s výukou. Rád mám i klidnější chvíle, ale pohyb a sport jsou pro mě opravdu důležitý.</p>
