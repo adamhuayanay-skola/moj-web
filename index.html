@@ -1256,7 +1256,11 @@
     var order = ['omne','sport','zpev','hry','uspechy','cile','zlepseni'];
 
     function dalsi(id) {
-      var link = document.querySelector('.sidebar a[onclick*="'' + id + ''"]');
+      var link = null;
+      document.querySelectorAll('.sidebar a').forEach(function(a) {
+        var oc = a.getAttribute('onclick') || '';
+        if (oc.indexOf("'" + id + "'") !== -1) link = a;
+      });
       ukaz(id, link);
     }
 
