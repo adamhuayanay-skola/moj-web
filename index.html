@@ -194,24 +194,23 @@
 
     .section {
       display: none;
-      opacity: 0;
-      transform: translateY(12px);
     }
     .section.active {
       display: block;
-      animation: sectionIn 0.4s ease forwards;
+      animation: sectionIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
     .section.leaving {
       display: block;
-      animation: sectionOut 0.22s ease forwards;
+      animation: sectionOut 0.35s ease forwards;
+      pointer-events: none;
     }
     @keyframes sectionIn {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
+      0% { opacity: 0; transform: translateY(22px) scale(0.98); filter: blur(4px); }
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
     }
     @keyframes sectionOut {
-      from { opacity: 1; transform: translateY(0); }
-      to { opacity: 0; transform: translateY(-8px); }
+      0% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+      100% { opacity: 0; transform: translateY(-16px) scale(0.98); filter: blur(3px); }
     }
 
     .section h1 {
@@ -738,7 +737,9 @@
         otevrit();
       }
     });
+    var switching = false;
     function ukaz(id, el) {
+      if (switching) return;
       var current = document.querySelector('.section.active');
       var next = document.getElementById(id);
       if (!next || current === next) return;
@@ -753,15 +754,17 @@
         });
         next.classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        switching = false;
       }
 
+      switching = true;
       if (current) {
         current.classList.remove('active');
         current.classList.add('leaving');
         setTimeout(function() {
           current.classList.remove('leaving');
           showNext();
-        }, 200);
+        }, 340);
       } else {
         showNext();
       }
