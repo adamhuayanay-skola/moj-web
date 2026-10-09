@@ -625,6 +625,72 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(139, 92, 246, 0.45);
     }
+
+    .rating-box {
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding: 1.5rem 1.6rem;
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(16, 28, 56, 0.9), rgba(8, 14, 32, 0.85));
+      border: 1px solid rgba(100, 180, 255, 0.28);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+      text-align: center;
+    }
+    .rating-box h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--accent-soft);
+      margin-bottom: 0.4rem;
+    }
+    .rating-box .rating-hint {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.1rem;
+    }
+    .rating-btns {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .rate-btn {
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.75rem 1.15rem;
+      border-radius: 12px;
+      border: 1px solid rgba(100, 180, 255, 0.3);
+      background: rgba(0,0,0,0.3);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      min-width: 120px;
+    }
+    .rate-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(167, 139, 250, 0.5);
+    }
+    .rate-btn.up.selected {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.35), rgba(34, 197, 94, 0.15));
+      border-color: rgba(34, 197, 94, 0.6);
+      box-shadow: 0 0 18px rgba(34, 197, 94, 0.25);
+    }
+    .rate-btn.mid.selected {
+      background: linear-gradient(135deg, rgba(234, 179, 8, 0.35), rgba(234, 179, 8, 0.15));
+      border-color: rgba(234, 179, 8, 0.6);
+      box-shadow: 0 0 18px rgba(234, 179, 8, 0.25);
+    }
+    .rate-btn.down.selected {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.35), rgba(239, 68, 68, 0.15));
+      border-color: rgba(239, 68, 68, 0.6);
+      box-shadow: 0 0 18px rgba(239, 68, 68, 0.25);
+    }
+    .rating-thanks {
+      margin-top: 0.9rem;
+      color: var(--accent-soft);
+      font-weight: 600;
+      min-height: 1.4em;
+    }
 </style>
 </head>
 <body>
@@ -1171,6 +1237,18 @@
         </div>
 </section>
 
+
+      <div class="rating-box" id="hodnoceni">
+        <h2>Hodnocení pro učitele</h2>
+        <p class="rating-hint">Jak se ti tenhle web líbí? Klikni na jednu možnost.</p>
+        <div class="rating-btns">
+          <button type="button" class="rate-btn up" onclick="ohodnotit(this, 'nahoru')">Palec nahoru</button>
+          <button type="button" class="rate-btn mid" onclick="ohodnotit(this, 'stred')">Palec uprostřed</button>
+          <button type="button" class="rate-btn down" onclick="ohodnotit(this, 'dolu')">Palec dolů</button>
+        </div>
+        <p class="rating-thanks" id="rating-msg"></p>
+      </div>
+
     </main>
   </div>
 
@@ -1251,6 +1329,28 @@
         showNext();
       }
     }
+
+    function ohodnotit(btn, typ) {
+      document.querySelectorAll('.rate-btn').forEach(function(b) {
+        b.classList.remove('selected');
+      });
+      btn.classList.add('selected');
+      var msg = document.getElementById('rating-msg');
+      if (typ === 'nahoru') msg.textContent = 'Díky – palec nahoru je uložený.';
+      else if (typ === 'stred') msg.textContent = 'Díky – hodnocení uprostřed je uložené.';
+      else msg.textContent = 'Díky – palec dolů je uložený.';
+      try { localStorage.setItem('hodnoceni-web', typ); } catch (e) {}
+    }
+    (function() {
+      try {
+        var saved = localStorage.getItem('hodnoceni-web');
+        if (!saved) return;
+        var map = { nahoru: 'up', stred: 'mid', dolu: 'down' };
+        var cls = map[saved];
+        var btn = document.querySelector('.rate-btn.' + cls);
+        if (btn) ohodnotit(btn, saved);
+      } catch (e) {}
+    })();
   </script>
 </body>
 </html>
