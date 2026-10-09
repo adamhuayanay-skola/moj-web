@@ -253,6 +253,27 @@
       transform: translateY(-2px);
     }
 
+    .box.highlight {
+      background: linear-gradient(145deg, rgba(139, 92, 246, 0.22), rgba(14, 165, 233, 0.12));
+      border-color: rgba(167, 139, 250, 0.45);
+      box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .box.highlight .tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 0.55rem;
+      opacity: 0.9;
+    }
+    .goal-meta {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
     ul { list-style: none; padding: 0; }
     ul li {
       padding: 0.42rem 0 0.42rem 1.35rem;
@@ -546,6 +567,11 @@
         <div class="box">
           <p>Když nejsem ve škole, často běhám na Miladě, hraju hry nebo jsem se sborem. O prázdninách jezdím na Vlnku plavat a pomáhám s výukou. Rád mám i klidnější chvíle, ale pohyb a sport jsou pro mě opravdu důležitý.</p>
         </div>
+        <h2>Co jsem se naučil</h2>
+        <div class="box highlight">
+          <div class="tag">Zkušenost</div>
+          <p>Ze sportu, her i sboru vím jedno: když něco nejde hned, nemá cenu to vzdát. Trénink, opakování a trpělivost fungují – ať je to delší běh, těžší level nebo zpěv. Naučil jsem se taky pomáhat druhým (plavání na Vlnce) a že práce v týmu ve sboru je jiná než trénovat sám, ale taky důležitá.</p>
+        </div>
       </section>
 
       <section id="sport" class="section">
@@ -672,6 +698,10 @@
 
       <section id="uspechy" class="section">
         <h1>Úspěchy</h1>
+        <div class="box highlight">
+          <div class="tag">Na co jsem pyšný</div>
+          <p><span class="bold">Boni Pueri + plavání + 15 km běh.</span> Dostal jsem se do sboru jako jeden z nejlepších, učím druhé plavat na Vlnce a uběhl jsem asi 15 km bez zastavení. To jsou věci, za kterými je hodně tréninku – ne náhoda.</p>
+        </div>
         <div class="box">
           <p>Tady jsou věci, na které jsem hrdý:</p>
           <ul>
@@ -697,12 +727,11 @@
         <h2>Konkrétní cíle</h2>
         <div class="box">
           <ul>
-            <li>Prodloužit běžecký rekord (teď cca 15 km bez zastavení)</li>
-            <li>Zlepšit tempo a celkovou běžeckou formu</li>
-            <li>Fortnite → Unreal Legends (teď Diamond 3, cca 55 %)</li>
-            <li>Geometry Dash → Tidal Wave (teď 43 %)</li>
-            <li>Clash Royale → 10 000 trofejí (teď 7 000 = 70 %)</li>
-            <li>Zvládnout mutaci hlasu a zůstat aktivní ve sboru Boni Pueri</li>
+            <li><span class="bold">Běh:</span> prodloužit rekord (teď cca 15 km) a zlepšit tempo <span class="goal-meta">— průběžně, hlavně na Miladě</span></li>
+            <li><span class="bold">Fortnite:</span> Unreal Legends (teď Diamond 3, cca 55 %) <span class="goal-meta">— cíl do pár měsíců</span></li>
+            <li><span class="bold">Geometry Dash:</span> Tidal Wave (teď 43 %, top 6 level) <span class="goal-meta">— dlouhodobý cíl</span></li>
+            <li><span class="bold">Clash Royale:</span> 10 000 trofejí (teď 7 000 = 70 %) <span class="goal-meta">— postupně</span></li>
+            <li><span class="bold">Sbor:</span> zvládnout mutaci hlasu a zůstat v Boni Pueri <span class="goal-meta">— teď</span></li>
           </ul>
         </div>
         <h2>Jak k tomu přistupuju</h2>
