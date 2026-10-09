@@ -171,7 +171,7 @@
     }
     .sidebar a {
       display: block;
-      color: var(--text-muted);
+      color: #7dd3fc;
       text-decoration: none;
       padding: 0.72rem 1rem;
       border-radius: 10px;
@@ -562,6 +562,44 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .version-bar {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .version-bar .ver-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-right: 0.3rem;
+    }
+    .ver-btn {
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(100, 180, 255, 0.3);
+      background: rgba(0,0,0,0.25);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .ver-btn:hover {
+      color: #fff;
+      border-color: rgba(167, 139, 250, 0.5);
+    }
+    .ver-btn.active {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.45), rgba(56, 189, 248, 0.25));
+      color: #fff;
+      border-color: rgba(167, 139, 250, 0.55);
+      box-shadow: 0 0 16px rgba(167, 139, 250, 0.25);
+    }
+    body.short-mode .ver-full { display: none !important; }
+    body:not(.short-mode) .ver-short { display: none !important; }
+    body.short-mode .ver-short { display: block !important; }
 </style>
 </head>
 <body>
@@ -596,8 +634,15 @@
 
     <main class="main">
 
+      <div class="version-bar">
+        <span class="ver-label">Text:</span>
+        <button type="button" class="ver-btn active" id="btn-full" onclick="setVersion('full')">Plná verze</button>
+        <button type="button" class="ver-btn" id="btn-short" onclick="setVersion('short')">Kratší verze</button>
+      </div>
+
       <section id="omne" class="section active">
         <h1>O mně</h1>
+        <div class="ver-full">
         <div class="box">
           <p>Jmenuju se <span class="bold">Adam Sanchez</span>. Pocházím z Česka – máma je z Česka a táta je z Peru. V Česku žiju už 11 let a bydlím v Hradci Králové. Je mi 13 let.</p>
           <p>Mám rád aktivní život. Nejvíc mě baví sporty, hlavně plavání a běh na dlouhé vzdálenosti. Taky rád hraju videohry a zpívám ve sboru Boni Pueri. Snažím se pořád něco zlepšovat – ve sportu, ve hrách i ve sboru.</p>
@@ -658,10 +703,31 @@
           <div class="tag">Zkušenost</div>
           <p>Ze sportu, her i sboru vím jedno: když něco nejde hned, nemá cenu to vzdát. Trénink, opakování a trpělivost fungují – ať je to delší běh, těžší level nebo zpěv. Naučil jsem se taky pomáhat druhým (plavání na Vlnce) a že práce v týmu ve sboru je jiná než trénovat sám, ale taky důležitá.</p>
         </div>
+        </div>
+        <div class="ver-short">
+        <div class="box">
+          <p>Jmenuju se <span class="bold">Adam Sanchez</span>, je mi 13 let, bydlím v Hradci Králové. Máma je z Česka, táta z Peru.</p>
+          <p>Baví mě plavání, běh, videohry a zpěv ve sboru Boni Pueri. Rád se zlepšuju a nevzdávám se, když něco nejde hned.</p>
+        </div>
+        <h2>Osa mého života</h2>
+        <div class="box">
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-age">0–2</div><div class="tl-text">Narodil jsem se v Hradci, pak jsme byli v Peru, po dvou letech návrat.</div></div>
+            <div class="tl-item"><div class="tl-age">4–13</div><div class="tl-text">Boni Pueri, plavání, atletika (s přestávkami), plavecké tábory až dodnes.</div></div>
+          </div>
+        </div>
+        <h2>Co jsem se naučil</h2>
+        <div class="box highlight">
+          <div class="tag">Zkušenost</div>
+          <p>Trénink a trpělivost fungují – ve sportu, ve hrách i ve sboru. Rád pomáhám druhým (plavání na Vlnce).</p>
+        </div>
+        </div>
+
       </section>
 
       <section id="sport" class="section">
         <h1>Sport</h1>
+        <div class="ver-full">
         <div class="box">
           <p>Sport je pro mě velká část života. Umím dobře plavat a běžet do dálky. Pohyb mě baví a snažím se v něm pořád posouvat. Není to pro mě jen o závodech – jde mi o to, abych byl lepší než včera.</p>
         </div>
@@ -680,10 +746,23 @@
         <div class="box">
           <p>Sport mi dává energii a lepší náladu. Když běžím nebo plavu, dokážu se odreagovat od školy i od her. Zároveň vidím, že když trénuju pravidelně, výsledky přijdou. To mě motivuje pokračovat.</p>
         </div>
+        </div>
+        <div class="ver-short">
+        <div class="box">
+          <p>Hlavně <span class="bold">plavání</span> a <span class="bold">běh</span>. Rekord cca 15 km bez zastavení. Učím plavat na Vlnce, jezdím na plavecké tábory.</p>
+          <ul>
+            <li>Plavání – Vlnce, tábory</li>
+            <li>Běh – Milada, delší tratě</li>
+            <li>Dřív atletika (s přestávkami)</li>
+          </ul>
+        </div>
+        </div>
+
       </section>
 
       <section id="zpev" class="section">
         <h1>Zpěv</h1>
+        <div class="ver-full">
         <div class="box">
           <p>Chodím do sboru <span class="bold">Boni Pueri</span>. Jsem v hlavním sboru a zpívám soprán.</p>
           <p>Do sboru jsem se dostal jako jeden z nejlepších. Je to pro mě velká čest a zároveň velká zodpovědnost. Zpěv mě baví a sbor je pro mě důležitá parta i zkušenost. Naučil jsem se tam disciplíně, spolupráci a tomu, že výsledek přijde, když se na tom pracuje společně.</p>
@@ -697,10 +776,18 @@
         <div class="box">
           <p>Díky sboru jsem poznal spoustu lidí a naučil se vystupovat. Zpěv mi pomáhá i s dýcháním a soustředěním. Je to něco jiného než sport nebo hry – a právě proto to mám rád.</p>
         </div>
+        </div>
+        <div class="ver-short">
+        <div class="box">
+          <p>Zpívám ve sboru <span class="bold">Boni Pueri</span> jako soprán. Jsem v hlavním sboru. Teď řeším mutaci hlasu a chci ve sboru zůstat.</p>
+        </div>
+        </div>
+
       </section>
 
       <section id="hry" class="section">
         <h1>Videohry</h1>
+        <div class="ver-full">
         <div class="box">
           <p>Rád hraju videohry. Hraju pravidelně a mám v nich jasné cíle. Baví mě soutěžit sám se sebou a posouvat svoje limity. Hry pro mě nejsou jen zábava – beru je jako další oblast, kde se můžu zlepšovat.</p>
         </div>
@@ -780,10 +867,48 @@
           </ul>
           <p>Vím, že to chce čas a trénink. Stejně jako u běhu – když to dělám pravidelně, výsledky se dostaví.</p>
         </div>
+        </div>
+        <div class="ver-short">
+        <div class="box">
+          <p><span class="bold">Fortnite</span> Diamond 3 → Unreal Legends (cca 55 %). <span class="bold">Tidal Wave</span> 43 % (top 6 level). <span class="bold">Clash Royale</span> 7000 / 10000 trofejí (70 %).</p>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Fortnite</span><span class="pct">55 %</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Tidal Wave</span><span class="pct">43 %</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:43%"></div></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Clash Royale</span><span class="pct">70 %</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+          </div>
+        </div>
+        <h2>Mapa herních cílů</h2>
+        <div class="box">
+          <div class="goal-map">
+            <div class="goal-card">
+              <div class="goal-top"><span class="goal-name">Fortnite → Unreal</span><span class="goal-diff">82 / 100</span></div>
+              <div class="diff-bar"><div class="diff-fill" style="width:82%"></div></div>
+            </div>
+            <div class="goal-card">
+              <div class="goal-top"><span class="goal-name">Tidal Wave</span><span class="goal-diff">95 / 100</span></div>
+              <div class="diff-bar"><div class="diff-fill" style="width:95%"></div></div>
+              <p style="margin-top:0.5rem;font-size:0.95rem;color:var(--text-muted)">Pro srovnání: top 6 level v Geometry Dash.</p>
+            </div>
+            <div class="goal-card">
+              <div class="goal-top"><span class="goal-name">Clash → 10k</span><span class="goal-diff">75 / 100</span></div>
+              <div class="diff-bar"><div class="diff-fill" style="width:75%"></div></div>
+            </div>
+          </div>
+        </div>
+        </div>
+
       </section>
 
       <section id="uspechy" class="section">
         <h1>Úspěchy</h1>
+        <div class="ver-full">
         <div class="box highlight">
           <div class="tag">Na co jsem pyšný</div>
           <p><span class="bold">Boni Pueri + plavání + 15 km běh.</span> Dostal jsem se do sboru jako jeden z nejlepších, učím druhé plavat na Vlnce a uběhl jsem asi 15 km bez zastavení. To jsou věci, za kterými je hodně tréninku – ne náhoda.</p>
@@ -803,10 +928,26 @@
           <p>Úspěchy pro mě nejsou jen čísla nebo diplomy. Jsou to důkazy, že když něco chci a jdu si za tím, tak se to dá zvládnout. Ať už je to místo ve sboru, delší běh nebo lepší skill ve hře – vždycky za tím stojí práce a vytrvalost.</p>
           <p>Jsem na to hrdý právě proto, že za tím je praxe. Když něco chci, tak si za tím jdu a nevzdávám to hned po první překážce.</p>
         </div>
+        </div>
+        <div class="ver-short">
+        <div class="box highlight">
+          <div class="tag">Na co jsem pyšný</div>
+          <p><span class="bold">Boni Pueri</span>, učím plavat na Vlnce, běžecký rekord cca <span class="bold">15 km</span>.</p>
+        </div>
+        <div class="box">
+          <ul>
+            <li>Hlavní sbor Boni Pueri (soprán)</li>
+            <li>Výuka plavání na Vlnce</li>
+            <li>15 km běh bez zastavení</li>
+          </ul>
+        </div>
+        </div>
+
       </section>
 
       <section id="cile" class="section">
         <h1>Cíle</h1>
+        <div class="ver-full">
         <div class="box">
           <p>Můj hlavní cíl je <span class="bold">běžet co nejdál</span>. Chci mít výdrž, sílu a hlavně radost z pohybu. Zároveň mám cíle i ve hrách a ve sboru.</p>
         </div>
@@ -825,10 +966,24 @@
           <p>Nesnažím se všechno najednou. Beru to postupně – trénuju, zkouším, opravuju chyby a jdu dál. Nejdůležitější je nevzdat to, když to zrovna nejde. To je pro mě klíč.</p>
           <p>U běhu i u her platí totéž: pravidelnost a trpělivost. Když něco dělám pořád dokola a učím se z chyb, tak se posunu.</p>
         </div>
+        </div>
+        <div class="ver-short">
+        <div class="box">
+          <ul>
+            <li><span class="bold">Běh:</span> delší rekord a lepší tempo</li>
+            <li><span class="bold">Fortnite:</span> Unreal Legends</li>
+            <li><span class="bold">GD:</span> Tidal Wave (top 6)</li>
+            <li><span class="bold">Clash:</span> 10 000 trofejí</li>
+            <li><span class="bold">Sbor:</span> zvládnout mutaci hlasu</li>
+          </ul>
+        </div>
+        </div>
+
       </section>
 
       <section id="zlepseni" class="section">
         <h1>Co zlepšuju</h1>
+        <div class="ver-full">
         <div class="box">
           <p>Pořád je něco, na čem chci pracovat. Tady je seznam věcí, kterým se teď věnuju:</p>
         </div>
@@ -860,12 +1015,35 @@
         <div class="box">
           <p>Chci být lepší – ve sportu, ve hrách i ve sboru. Ne proto, abych někoho porazil, ale proto, abych viděl, že se posouvám. To mě baví a motivuje pokračovat dál.</p>
         </div>
+        </div>
+        <div class="ver-short">
+        <div class="box">
+          <ul>
+            <li>Běh – výdrž a pravidelnost</li>
+            <li>Hry – skill a stabilita</li>
+            <li>Sbor – mutace hlasu</li>
+            <li>Trpělivost, když něco nejde hned</li>
+          </ul>
+        </div>
+        </div>
+
       </section>
 
     </main>
   </div>
 
   <script>
+    function setVersion(mode) {
+      if (mode === 'short') {
+        document.body.classList.add('short-mode');
+        document.getElementById('btn-short').classList.add('active');
+        document.getElementById('btn-full').classList.remove('active');
+      } else {
+        document.body.classList.remove('short-mode');
+        document.getElementById('btn-full').classList.add('active');
+        document.getElementById('btn-short').classList.remove('active');
+      }
+    }
     function otevrit() {
       var w = document.getElementById('welcome');
       var l = document.getElementById('layout');
