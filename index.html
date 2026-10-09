@@ -600,6 +600,31 @@
     body.short-mode .ver-full { display: none !important; }
     body:not(.short-mode) .ver-short { display: none !important; }
     body.short-mode .ver-short { display: block !important; }
+
+    .next-wrap {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(100, 180, 255, 0.15);
+      display: flex;
+      justify-content: flex-end;
+    }
+    .next-btn {
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 0.7rem 1.5rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(135deg, #8b5cf6, #38bdf8);
+      box-shadow: 0 4px 18px rgba(139, 92, 246, 0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .next-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139, 92, 246, 0.45);
+    }
 </style>
 </head>
 <body>
@@ -761,7 +786,11 @@
         </div>
         </div>
 
-      </section>
+      
+        <div class="next-wrap">
+          <button type="button" class="next-btn" onclick="dalsi('sport')">Další → Sport</button>
+        </div>
+</section>
 
       <section id="sport" class="section">
         <h1>Sport</h1>
@@ -799,7 +828,11 @@
         </div>
         </div>
 
-      </section>
+      
+        <div class="next-wrap">
+          <button type="button" class="next-btn" onclick="dalsi('zpev')">Další → Zpěv</button>
+        </div>
+</section>
 
       <section id="zpev" class="section">
         <h1>Zpěv</h1>
@@ -832,7 +865,11 @@
         </div>
         </div>
 
-      </section>
+      
+        <div class="next-wrap">
+          <button type="button" class="next-btn" onclick="dalsi('hry')">Další → Videohry</button>
+        </div>
+</section>
 
       <section id="hry" class="section">
         <h1>Videohry</h1>
@@ -957,7 +994,11 @@
         </div>
         </div>
 
-      </section>
+      
+        <div class="next-wrap">
+          <button type="button" class="next-btn" onclick="dalsi('uspechy')">Další → Úspěchy</button>
+        </div>
+</section>
 
       <section id="uspechy" class="section">
         <h1>Úspěchy</h1>
@@ -1001,7 +1042,11 @@
         </div>
         </div>
 
-      </section>
+      
+        <div class="next-wrap">
+          <button type="button" class="next-btn" onclick="dalsi('cile')">Další → Cíle</button>
+        </div>
+</section>
 
       <section id="cile" class="section">
         <h1>Cíle</h1>
@@ -1045,7 +1090,11 @@
         </div>
         </div>
 
-      </section>
+      
+        <div class="next-wrap">
+          <button type="button" class="next-btn" onclick="dalsi('zlepseni')">Další → Co zlepšuju</button>
+        </div>
+</section>
 
       <section id="zlepseni" class="section">
         <h1>Co zlepšuju</h1>
@@ -1116,12 +1165,32 @@
         </div>
         </div>
 
-      </section>
+      
+        <div class="next-wrap">
+          <button type="button" class="next-btn" onclick="dalsi('omne')">Zpět na začátek → O mně</button>
+        </div>
+</section>
 
     </main>
   </div>
 
   <script>
+    var order = ['omne','sport','zpev','hry','uspechy','cile','zlepseni'];
+
+    function dalsi(id) {
+      var link = document.querySelector('.sidebar a[onclick*="'' + id + ''"]');
+      ukaz(id, link);
+    }
+
+    document.addEventListener('click', function(e) {
+      var sidebar = document.querySelector('.sidebar');
+      var btn = document.querySelector('.menu-btn');
+      if (!sidebar || !sidebar.classList.contains('open')) return;
+      if (sidebar.contains(e.target)) return;
+      if (btn && btn.contains(e.target)) return;
+      sidebar.classList.remove('open');
+    });
+
     function setVersion(mode) {
       if (mode === 'short') {
         document.body.classList.add('short-mode');
