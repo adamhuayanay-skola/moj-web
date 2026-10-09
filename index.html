@@ -691,6 +691,17 @@
       font-weight: 600;
       min-height: 1.4em;
     }
+
+    .rate-btn {
+      font-size: 1.85rem !important;
+      min-width: 72px !important;
+      padding: 0.65rem 0.9rem !important;
+      line-height: 1;
+    }
+    .rate-btn .thumb-mid {
+      display: inline-block;
+      transform: rotate(90deg);
+    }
 </style>
 </head>
 <body>
@@ -1232,22 +1243,21 @@
         </div>
 
       
-        <div class="next-wrap">
+                <div class="rating-box" id="hodnoceni">
+          <div class="rating-btns">
+            <button type="button" class="rate-btn up" onclick="ohodnotit(this, 'nahoru')" aria-label="nahoru">👍</button>
+            <button type="button" class="rate-btn mid" onclick="ohodnotit(this, 'stred')" aria-label="stred"><span class="thumb-mid">👍</span></button>
+            <button type="button" class="rate-btn down" onclick="ohodnotit(this, 'dolu')" aria-label="dolu">👎</button>
+          </div>
+          <p class="rating-thanks" id="rating-msg"></p>
+        </div>
+<div class="next-wrap">
           <button type="button" class="next-btn" onclick="dalsi('omne')">Zpět na začátek → O mně</button>
         </div>
 </section>
 
 
-      <div class="rating-box" id="hodnoceni">
-        <h2>Hodnocení pro učitele</h2>
-        <p class="rating-hint">Jak se ti tenhle web líbí? Klikni na jednu možnost.</p>
-        <div class="rating-btns">
-          <button type="button" class="rate-btn up" onclick="ohodnotit(this, 'nahoru')">Palec nahoru</button>
-          <button type="button" class="rate-btn mid" onclick="ohodnotit(this, 'stred')">Palec uprostřed</button>
-          <button type="button" class="rate-btn down" onclick="ohodnotit(this, 'dolu')">Palec dolů</button>
-        </div>
-        <p class="rating-thanks" id="rating-msg"></p>
-      </div>
+      
 
     </main>
   </div>
@@ -1340,9 +1350,9 @@
       });
       btn.classList.add('selected');
       var msg = document.getElementById('rating-msg');
-      if (typ === 'nahoru') msg.textContent = 'Díky – palec nahoru je uložený.';
-      else if (typ === 'stred') msg.textContent = 'Díky – hodnocení uprostřed je uložené.';
-      else msg.textContent = 'Díky – palec dolů je uložený.';
+      if (typ === 'nahoru') msg.textContent = '';
+      else if (typ === 'stred') msg.textContent = '';
+      else msg.textContent = '';
       try { localStorage.setItem('hodnoceni-web', typ); } catch (e) {}
     }
     (function() {
