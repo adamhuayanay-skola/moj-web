@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; }
 
     :root {
       --bg-deep: #030712;
@@ -174,7 +176,7 @@
       margin-bottom: 0.25rem;
       font-size: 1.05rem;
       font-weight: 500;
-      transition: background 0.15s, color 0.15s;
+      transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
     }
     .sidebar a:hover {
       background: rgba(14, 165, 233, 0.12);
@@ -199,20 +201,20 @@
     }
     .section.active {
       display: block;
-      animation: sectionIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation: sectionIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .section.leaving {
       display: block;
-      animation: sectionOut 0.35s ease forwards;
+      animation: sectionOut 0.28s cubic-bezier(0.4, 0, 1, 1) forwards;
       pointer-events: none;
     }
     @keyframes sectionIn {
-      0% { opacity: 0; transform: translateY(22px) scale(0.98); filter: blur(4px); }
-      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+      0% { opacity: 0; transform: translateY(16px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
     @keyframes sectionOut {
-      0% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-      100% { opacity: 0; transform: translateY(-16px) scale(0.98); filter: blur(3px); }
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-10px); }
     }
 
     .section h1 {
@@ -246,7 +248,7 @@
       margin-bottom: 1.3rem;
       backdrop-filter: blur(16px);
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.06);
-      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
     }
@@ -863,8 +865,15 @@
 
   <script>
     function otevrit() {
-      document.getElementById('welcome').style.display = 'none';
-      document.getElementById('layout').classList.add('show');
+      var w = document.getElementById('welcome');
+      var l = document.getElementById('layout');
+      w.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+      w.style.opacity = '0';
+      w.style.transform = 'scale(1.02)';
+      l.classList.add('show');
+      setTimeout(function() {
+        w.style.display = 'none';
+      }, 450);
     }
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && (e.key === 'r' || e.key === 'R')) {
@@ -899,7 +908,7 @@
         setTimeout(function() {
           current.classList.remove('leaving');
           showNext();
-        }, 340);
+        }, 270);
       } else {
         showNext();
       }
