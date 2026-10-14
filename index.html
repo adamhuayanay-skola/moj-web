@@ -699,6 +699,22 @@
       display: inline-block;
       transform: rotate(90deg);
     }
+
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border-strong);
+      box-shadow: 0 0 20px var(--glow);
+      display: block;
+      margin: 0 0 0.4rem 0;
+    }
+    .photo-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0 0 1.2rem 0;
+    }
 </style>
 </head>
 <body>
@@ -741,6 +757,8 @@
 
       <section id="omne" class="section active">
         <h1>O mně</h1>
+        <img class="profile-photo" src="adam.jpg" alt="AI predstava">
+        <p class="photo-note">AI predstava (neni to moje realna fotka)</p>
         <div class="ver-full">
         <div class="box">
           <p>Jmenuju se <span class="bold">Adam Sanchez</span>. Pocházím z Česka – máma je z Česka a táta je z Peru. V Česku žiju už 11 let a bydlím v Hradci Králové. Je mi 13 let.</p>
@@ -981,6 +999,12 @@
             <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
           </div>
         </div>
+        
+        <h2>Jak hraju Geometry Dash</h2>
+        <div class="box">
+          <p>V GD hraju hlavně těžší levely. Teď dělám <span class="bold">Tidal Wave</span> – mám asi 43 %. Je to top 6 level, takže to chce hodně pokusů.</p>
+          <p>Hraju spíš na trpělivost: opakuju části, dokud mi to nesedne. Baví mě, když po hodinách konečně projedu úsek, kterej dřív nešel.</p>
+        </div>
         <h2>Mapa herních cílů</h2>
         <div class="box">
           <p style="margin-bottom:1rem;color:var(--text-muted);font-size:0.98rem;">Tady je mapa mých hlavních cílů ve hrách – progress a jak těžké to je (0–100).</p>
@@ -1044,7 +1068,12 @@
             <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
           </div>
         </div>
-        <h2>Mapa herních cílů</h2>
+        
+        <h2>Jak hraju Geometry Dash</h2>
+        <div class="box">
+          <p>Hlavně těžší levely. <span class="bold">Tidal Wave</span> mám na 43 % (top 6). Hraju na trpělivost – opakuju části, dokud nejdou.</p>
+        </div>
+<h2>Mapa herních cílů</h2>
         <div class="box">
           <p style="margin-bottom:1rem;color:var(--text-muted);font-size:0.98rem;">Progress a obtížnost (0–100).</p>
           <div class="goal-map">
