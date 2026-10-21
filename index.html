@@ -715,6 +715,52 @@
       color: var(--text-muted);
       margin: 0 0 1.2rem 0;
     }
+
+    .present-badge {
+      display: inline-block;
+      margin-top: 1.1rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: #e8f0fa;
+      background: linear-gradient(135deg, rgba(43,127,212,0.45), rgba(77,163,255,0.25));
+      border: 1px solid rgba(77,163,255,0.45);
+      box-shadow: 0 0 18px rgba(77,163,255,0.25);
+    }
+    .kbd-hint {
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .kbd-hint kbd {
+      display: inline-block;
+      padding: 0.12rem 0.45rem;
+      border-radius: 6px;
+      border: 1px solid rgba(100,180,255,0.35);
+      background: rgba(0,0,0,0.35);
+      color: var(--accent-soft);
+      font-family: inherit;
+      font-size: 0.85rem;
+    }
+    .progress-fill.anim-restart {
+      animation: barIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes barIn {
+      from { transform: scaleX(0); transform-origin: left center; opacity: 0.6; }
+      to { transform: scaleX(1); transform-origin: left center; opacity: 1; }
+    }
+    .section.active .box {
+      animation: boxPop 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .section.active .box:nth-child(2) { animation-delay: 0.05s; }
+    .section.active .box:nth-child(3) { animation-delay: 0.1s; }
+    .section.active .box:nth-child(4) { animation-delay: 0.15s; }
+    @keyframes boxPop {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 </style>
 </head>
 <body>
@@ -724,6 +770,7 @@
     <h1>Vítej na mém webu</h1>
     <p>Ahoj, jsem Adam.</p>
     <p>Tady je něco o mně – sport, sbor, hry.</p>
+    <div class="present-badge">Prezentace · říjen 2026</div>
     <div class="hint">
       Zmáčkni <strong>Ctrl + R</strong> (nebo klikni na tlačítko dole),<br>
       aby se otevřel obsah stránky.
@@ -1385,6 +1432,44 @@
         if (btn) ohodnotit(btn, saved);
       } catch (e) {}
     })();
-  </script>
+  
+  // === prezentace ===
+  const SEKCE = ['omne','sport','zpev','hry','uspechy','cile','zlepseni'];
+  function animujProgress() {
+    document.querySelectorAll('.section.active .progress-fill, .section.active .diff-fill').forEach(function(el) {
+      el.classList.remove('anim-restart');
+      void el.offsetWidth;
+      el.classList.add('anim-restart');
+    });
+  }
+  (function() {
+    var _u = window.ukaz;
+    if (typeof _u === 'function') {
+      window.ukaz = function(id, el) {
+        _u(id, el);
+        setTimeout(animujProgress, 50);
+      };
+    }
+  })();
+  document.addEventListener('keydown', function(e) {
+    var layout = document.getElementById('layout');
+    if (!layout || !layout.classList.contains('show')) return;
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON')) {
+      if (e.target.tagName === 'BUTTON' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) { /* allow */ }
+      else if (e.target.tagName !== 'BUTTON') return;
+    }
+    var a = document.querySelector('.section.active');
+    var cur = a ? a.id : 'omne';
+    var i = SEKCE.indexOf(cur);
+    if (i < 0) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+      e.preventDefault();
+      if (i < SEKCE.length - 1) window.ukaz(SEKCE[i + 1], null);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      if (i > 0) window.ukaz(SEKCE[i - 1], null);
+    }
+  });
+</script>
 </body>
 </html>
