@@ -784,7 +784,8 @@
       <div class="name">Adam Sanchez</div>
       <div class="sub">13 let, Hradec Králové</div>
       <div class="webtitle">Můj web</div>
-      <a href="#" class="active" onclick="ukaz('omne', this)">O mně</a>
+      <a href="#" class="active" onclick="ukaz('domu', this)">Domovská stránka</a>
+      <a href="#" onclick="ukaz('omne', this)">O mně</a>
       <a href="#" onclick="ukaz('sport', this)">Sport</a>
       <a href="#" onclick="ukaz('zpev', this)">Zpěv</a>
       <a href="#" onclick="ukaz('hry', this)">Videohry</a>
@@ -801,7 +802,18 @@
         <button type="button" class="ver-btn" id="btn-short" onclick="setVersion('short')">Kratší verze</button>
       </div>
 
-      <section id="omne" class="section active">
+      <section id="domu" class="section active">
+        <h1>Můj web</h1>
+        <div class="box">
+          <p>Jmenuju se <span class="bold">Adam</span>.</p>
+          <p>Tady je něco o mně – sport, sbor a hry.</p>
+        </div>
+        <div class="next-wrap">
+          <button type="button" class="next-btn" onclick="dalsi('omne')">Další → O mně</button>
+        </div>
+      </section>
+
+      <section id="omne" class="section">
         <h1>O mně</h1>
         <div class="ver-full">
         <div class="box">
@@ -1348,6 +1360,7 @@
       l.classList.add('show');
       setTimeout(function() {
         w.style.display = 'none';
+        ukaz('domu', document.querySelector('.sidebar a[onclick*="domu"]'));
       }, 450);
     }
     document.addEventListener('keydown', function(e) {
@@ -1412,7 +1425,7 @@
     })();
   
   // === prezentace ===
-  const SEKCE = ['omne','sport','zpev','hry','uspechy','cile','zlepseni'];
+  const SEKCE = ['domu','omne','sport','zpev','hry','uspechy','cile','zlepseni'];
   function animujProgress() {
     document.querySelectorAll('.section.active .progress-fill, .section.active .diff-fill').forEach(function(el) {
       el.classList.remove('anim-restart');
